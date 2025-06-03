@@ -48,7 +48,7 @@ def train_with_mlflow():
 
     with open('config.yml', 'r') as file:
         config = yaml.safe_load(file)
-
+    
     mlflow.set_experiment("Model Training Experiment")
     
     with mlflow.start_run() as run:
