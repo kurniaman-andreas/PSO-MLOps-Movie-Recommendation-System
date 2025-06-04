@@ -8,6 +8,7 @@ from steps.train import Trainer
 from steps.predict import Predictor
 from sklearn.metrics import classification_report
 
+
 # Set up logging
 logging.basicConfig(level=logging.INFO,format='%(asctime)s:%(levelname)s:%(message)s')
 
