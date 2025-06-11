@@ -1,0 +1,23 @@
+FROM apache/airflow:2.8.1-python3.10
+
+# Switch ke root agar bisa install dependencies OS
+USER root
+
+# Install build dependencies (GCC, libpython, dll.)
+RUN apt-get update && apt-get install -y \
+    gcc \
+    build-essential \
+    python3-dev \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Kembali ke airflow user (penting!)
+USER airflow
+
+# Install Python packages sebagai airflow user
+RUN pip install --no-cache-dir \
+    numpy \
+    scikit-surprise \
+    pandas \
+    mlflow \
+    pyyaml

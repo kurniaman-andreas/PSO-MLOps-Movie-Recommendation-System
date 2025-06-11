@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/Hajid%20Ramadhan/Downloads/PSO%20branch/PSO-MLOps-Movie-Recommendation-System/mlruns/324141520800367872/4753d72e6e52436099de9376c1c28021/artifacts
+end_time: 1749673196443
+entry_point_name: ''
+experiment_id: '324141520800367872'
+lifecycle_stage: active
+run_id: 4753d72e6e52436099de9376c1c28021
+run_name: defiant-moth-898
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1749673194858
+status: 4
+tags: []
+user_id: airflow

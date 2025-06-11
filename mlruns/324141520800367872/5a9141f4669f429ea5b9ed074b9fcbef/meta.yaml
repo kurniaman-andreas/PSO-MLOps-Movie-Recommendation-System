@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/Hajid%20Ramadhan/Downloads/PSO%20branch/PSO-MLOps-Movie-Recommendation-System/mlruns/324141520800367872/5a9141f4669f429ea5b9ed074b9fcbef/artifacts
+end_time: 1749674461868
+entry_point_name: ''
+experiment_id: '324141520800367872'
+lifecycle_stage: active
+run_id: 5a9141f4669f429ea5b9ed074b9fcbef
+run_name: masked-auk-776
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1749674460632
+status: 4
+tags: []
+user_id: airflow

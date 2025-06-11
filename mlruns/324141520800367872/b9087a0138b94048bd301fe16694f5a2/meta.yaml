@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/Hajid%20Ramadhan/Downloads/PSO%20branch/PSO-MLOps-Movie-Recommendation-System/mlruns/324141520800367872/b9087a0138b94048bd301fe16694f5a2/artifacts
+end_time: 1749674769712
+entry_point_name: ''
+experiment_id: '324141520800367872'
+lifecycle_stage: active
+run_id: b9087a0138b94048bd301fe16694f5a2
+run_name: rambunctious-bee-402
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1749674768498
+status: 4
+tags: []
+user_id: airflow

@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/Hajid%20Ramadhan/Downloads/PSO%20branch/PSO-MLOps-Movie-Recommendation-System/mlruns/324141520800367872/b24b848421f1429580e6e13392ba312b/artifacts
+end_time: 1749675928138
+entry_point_name: ''
+experiment_id: '324141520800367872'
+lifecycle_stage: active
+run_id: b24b848421f1429580e6e13392ba312b
+run_name: amazing-moose-252
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1749675927157
+status: 4
+tags: []
+user_id: airflow

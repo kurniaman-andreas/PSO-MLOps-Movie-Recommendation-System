@@ -5,15 +5,21 @@ import os
 import mlflow
 import logging
 from steps_model.preprocess_and_split import preprocess_and_split
+from pathlib import Path
 
 # Setup logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s:%(levelname)s:%(message)s')
 
 def main():
     logging.info("Starting SVD training pipeline...")
+    mlflow.set_tracking_uri("file:///opt/airflow/mlruns")
+    mlflow.set_experiment("SVD Movie Recommendation")
 
     # Start MLflow experiment
     mlflow.set_experiment("SVD Movie Recommendation")
+
+    print("📍 Starting MLflow tracking")
+    print("Tracking URI:", mlflow.get_tracking_uri())
 
     with mlflow.start_run() as run:
         # Step 1: Preprocessing
@@ -55,13 +61,23 @@ def main():
         mlflow.log_metric("MAE", mae)
 
         # Step 7: Save and log model
-        model_filename = "model/svd_model.pkl"
-        os.makedirs(os.path.dirname(model_filename), exist_ok=True)
+        # Lebih aman di semua OS & Docker
+        MODEL_DIR = Path("model")
+        MODEL_DIR.mkdir(parents=True, exist_ok=True)
+        model_filename = MODEL_DIR / "svd_model.pkl"
+
+
+        model_filename = MODEL_DIR / "svd_model.pkl"
         with open(model_filename, "wb") as f:
             pickle.dump(model, f)
 
-        mlflow.log_artifact(model_filename, artifact_path="model")
-        logging.info(f"✅ Model saved and logged to MLflow under: {model_filename}")
+
+        mlflow.log_artifact("/opt/airflow/model/svd_model.pkl", artifact_path="model")
+
+        logging.info(f"Saving model to: {model_filename}")
+        logging.info(f"Artifact absolute path: {os.path.abspath(model_filename)}")
+        print("✅ MLflow run started with ID:", run.info.run_id)
+
 
 if __name__ == "__main__":
     main()

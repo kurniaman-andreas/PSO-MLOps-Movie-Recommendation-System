@@ -1,12 +1,22 @@
-# version: "3.8"
+version: '3.8'
 
 services:
-  flask_app:
-    build: .
-    ports:
-      - "5000:5000"
-    volumes:
-      - .:/app
+  airflow:
+    build:
+      context: .                # Direktori tempat Dockerfile.airflow berada
+      dockerfile: Dockerfile.airflow
+    image: custom-airflow:latest
+    restart: always
     environment:
-      FLASK_APP: app.py
-    command: flask run --host=0.0.0.0
+      AIRFLOW__CORE__EXECUTOR: SequentialExecutor
+      AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+    volumes:
+      - .:/opt/airflow
+      - ./mlruns:/opt/airflow/mlruns
+      - ./model:/opt/airflow/model
+    ports:
+      - "8080:8080"
+    command: >
+      bash -c "airflow db init &&
+               airflow users create --username admin --firstname Hajid --lastname Ramadhan --role Admin --email hajid@example.com --password admin &&
+               airflow webserver & airflow scheduler"
