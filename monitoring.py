@@ -33,9 +33,9 @@ def generate_monitoring_reports():
     predictions = model.test(testset)
 
     # Convert to DataFrame
-    pred_df = pd.DataFrame(predictions)
-    pred_df['true_rating'] = pred_df['r_ui']
-    pred_df['pred_rating'] = pred_df['est']
+    # pred_df = pd.DataFrame(predictions)
+    # pred_df['true_rating'] = pred_df['r_ui']
+    # pred_df['pred_rating'] = pred_df['est']
 
     # Create reports
     os.makedirs("reports", exist_ok=True)
@@ -46,23 +46,24 @@ def generate_monitoring_reports():
     drift_path = "reports/data_drift_report.html"
     my_eval.save_html(drift_path)
 
-    # 2. Model Performance Report
-    performance_report = Report(metrics=[RegressionPreset()])
-    performance_report.run(
-        reference_data=pred_df[['true_rating']],
-        current_data=pred_df[['pred_rating']]
-    )
-    performance_report_path = "reports/performance_report.html"
-    performance_report.save(performance_report_path)
-
-    # Log to MLflow
-    mlflow.set_experiment("SVD Movie Recommendation")
-    with mlflow.start_run(run_name="monitoring_reports"):
-        mlflow.set_tag("report_type", "evidently")
-        mlflow.log_artifact(drift_path, artifact_path="reports")
-        mlflow.log_artifact(performance_report_path, artifact_path="reports")
-
-    logging.info("✅ Monitoring reports generated and logged to MLflow.")
-
+    
 if __name__ == "__main__":
     generate_monitoring_reports()
+
+# # 2. Model Performance Report
+    # performance_report = Report(metrics=[RegressionPreset()])
+    # performance_report.run(
+    #     reference_data=pred_df[['true_rating']],
+    #     current_data=pred_df[['pred_rating']]
+    # )
+    # performance_report_path = "reports/performance_report.html"
+    # performance_report.save(performance_report_path)
+
+    # # Log to MLflow
+    # mlflow.set_experiment("SVD Movie Recommendation")
+    # with mlflow.start_run(run_name="monitoring_reports"):
+    #     mlflow.set_tag("report_type", "evidently")
+    #     mlflow.log_artifact(drift_path, artifact_path="reports")
+    #     mlflow.log_artifact(performance_report_path, artifact_path="reports")
+
+    # logging.info("✅ Monitoring reports generated and logged to MLflow.")
