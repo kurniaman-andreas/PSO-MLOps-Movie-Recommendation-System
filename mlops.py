@@ -12,6 +12,8 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s:%(levelname)s:%(mess
 def main():
     logging.info("Starting SVD training pipeline...")
 
+    # Set local tracking and artifact path
+    mlflow.set_tracking_uri("file://" + os.path.abspath("mlruns"))
     # Start MLflow experiment
     mlflow.set_experiment("SVD Movie Recommendation")
 
@@ -19,6 +21,8 @@ def main():
         # Step 1: Preprocessing
         preprocess_and_split()
         logging.info("✅ Preprocessing done.")
+        
+
         
 
         # Step 2: Load train & test data
