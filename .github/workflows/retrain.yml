@@ -1,0 +1,51 @@
+name: Daily Retrain and Monitor
+
+on:
+  schedule:
+    - cron: "0 2 * * *" # Run daily at 2 AM UTC
+  workflow_dispatch:
+
+jobs:
+  retrain_and_monitor:
+    runs-on: ubuntu-latest
+
+    env:
+      MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+
+    steps:
+      - name: ⬇️ Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: 📦 Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # - name: 🧪 Generate New Synthetic Data
+      #   run: |
+      #     python generate_data.py  # optional, tergantung use case kamu
+
+      - name: 🎯 Run Training Pipeline
+        run: |
+          python mlops.py
+
+      - name: 📊 Run Monitoring Reports
+        run: |
+          python monitoring.py
+
+      - name: ⬆️ Push DVC to S3 Remote
+        run: |
+          dvc remote default s3remote
+          dvc add data/interactions.csv
+          dvc push
+
+      - name: ✅ Done
+        run: echo "MLOps pipeline finished successfully!"
