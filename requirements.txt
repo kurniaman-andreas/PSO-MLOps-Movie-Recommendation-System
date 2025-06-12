@@ -19,5 +19,5 @@ numpy==1.21.6
 pandas
 scikit-learn
 mlflow
-evidently
+evidently==0.7.7
 # evidently @ git+https://github.com/evidentlyai/evidently.git
