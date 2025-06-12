@@ -45,7 +45,7 @@ jobs:
 
       - name: ⬆️ Push DVC to S3 Remote
         run: |
-          dvc remote add -d s3remote s3://recommendation-dvc-bucket/dvc-artifacts
+          dvc remote add -d s3remote s3://recommendation-dvc-bucket/dvcstore
           dvc remote modify s3remote endpointurl https://s3.$AWS_DEFAULT_REGION.amazonaws.com
           dvc remote modify s3remote access_key_id $AWS_ACCESS_KEY_ID
           dvc remote modify s3remote secret_access_key $AWS_SECRET_ACCESS_KEY
