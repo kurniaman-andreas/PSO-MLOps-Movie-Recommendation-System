@@ -16,4 +16,6 @@
 Flask
 scikit-surprise
 numpy==1.21.6
+pandas
+scikit-learn
 # evidently @ git+https://github.com/evidentlyai/evidently.git
