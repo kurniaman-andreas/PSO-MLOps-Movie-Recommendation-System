@@ -1,0 +1,5 @@
+outs:
+- md5: d379b94f0243eab20c584fc6555ef7f0
+  size: 153430
+  hash: md5
+  path: interactions.csv
