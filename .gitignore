@@ -8,3 +8,5 @@ __pycache__/
 .dvc/tmp/
 
 # Data dan log 
+mlruns/
+
