@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/ITS/Semester%208/PSO/Final-Recommendation%20System/mlops-project/mlruns/646477522854113074/eaea5fe376cd4762928487426ba18ed0/artifacts
+end_time: 1749103171532
+entry_point_name: ''
+experiment_id: '646477522854113074'
+lifecycle_stage: active
+run_id: eaea5fe376cd4762928487426ba18ed0
+run_name: silent-yak-860
+run_uuid: eaea5fe376cd4762928487426ba18ed0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1749103171378
+status: 4
+tags: []
+user_id: asus

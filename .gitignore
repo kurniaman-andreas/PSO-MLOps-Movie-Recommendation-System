@@ -1,0 +1,10 @@
+# Environment dan cache
+venv/
+__pycache__/
+*.pyc
+
+# DVC config lokal dan temporary
+.dvc/config.local
+.dvc/tmp/
+
+# Data dan log 

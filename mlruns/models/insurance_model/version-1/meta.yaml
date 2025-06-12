@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1748966346137
+current_stage: None
+description: null
+last_updated_timestamp: 1748966346137
+name: insurance_model
+run_id: 92e4846855aa4f5188ed10bd16471032
+run_link: null
+source: file:///D:/ITS/Semester%208/PSO/Final-Recommendation%20System/mlops-project/mlruns/784141935935469817/92e4846855aa4f5188ed10bd16471032/artifacts/model
+status: READY
+status_message: null
+storage_location: file:///D:/ITS/Semester%208/PSO/Final-Recommendation%20System/mlops-project/mlruns/784141935935469817/92e4846855aa4f5188ed10bd16471032/artifacts/model
+user_id: null
+version: 1
