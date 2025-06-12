@@ -19,6 +19,7 @@ def main():
         # Step 1: Preprocessing
         preprocess_and_split()
         logging.info("✅ Preprocessing done.")
+        
 
         # Step 2: Load train & test data
         train_df = pd.read_csv('data/train.csv')
