@@ -1,4 +1,4 @@
-name: Daily Retrain and Monitor
+name: Daily Retrain and MonitorV2
 
 on:
   schedule:
