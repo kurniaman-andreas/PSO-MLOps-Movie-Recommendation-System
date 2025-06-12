@@ -55,9 +55,11 @@ def main():
         mlflow.log_metric("RMSE", rmse)
         mlflow.log_metric("MAE", mae)
 
-        # Step 7: Save and log model
-        model_filename = "model/svd_model.pkl"
-        os.makedirs(os.path.dirname(model_filename), exist_ok=True)
+         # Step 7: Save and log model
+        model_dir = os.path.join(".", "artifacts", "model")  # Gunakan direktori relatif
+        os.makedirs(model_dir, exist_ok=True)
+
+        model_filename = os.path.join(model_dir, "svd_model.pkl")
         with open(model_filename, "wb") as f:
             pickle.dump(model, f)
 
