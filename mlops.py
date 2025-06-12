@@ -11,9 +11,10 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s:%(levelname)s:%(mess
 
 def main():
     logging.info("Starting SVD training pipeline...")
-
+    
+    os.makedirs("mlruns", exist_ok=True)
     # Set local tracking and artifact path
-    mlflow.set_tracking_uri("file://" + os.path.abspath("mlruns"))
+    mlflow.set_tracking_uri("file:mlruns")
     # Start MLflow experiment
     mlflow.set_experiment("SVD Movie Recommendation")
 
