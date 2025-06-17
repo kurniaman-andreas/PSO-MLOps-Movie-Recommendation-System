@@ -6,6 +6,7 @@ from surprise import Reader, Dataset, SVD
 from evidently import Report
 from evidently.presets import DataDriftPreset, RegressionPreset
 import logging
+import wandb
 
 # Setup logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s:%(levelname)s:%(message)s')
@@ -45,6 +46,17 @@ def generate_monitoring_reports():
     my_eval = data_drift_report.run(reference_data=train_df, current_data=test_df)
     drift_path = "reports/data_drift_report.html"
     my_eval.save_html(drift_path)
+
+    # 2. Init wandb for logging
+    wandb.init(project="model-monitoring", job_type="monitoring")
+
+    # 3. Log HTML report to wandb
+    if os.path.exists(drift_path):
+        wandb.save(drift_path)  # Save as file artifact
+        wandb.log({"drift_report": wandb.Html(drift_path)})
+        logging.info("✅ Report uploaded to wandb.")
+
+    logging.info("✅ Monitoring pipeline finished.")
 
     
 if __name__ == "__main__":
