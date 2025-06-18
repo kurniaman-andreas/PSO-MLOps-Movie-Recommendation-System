@@ -46,7 +46,7 @@ jobs:
 
       - name: 🧼 Preprocess and Split Data
         run: |
-          python preprocess_and_split.py
+          python steps_model/preprocess_and_split.py
 
       - name: 🎯 Run Training Pipeline
         run: |
