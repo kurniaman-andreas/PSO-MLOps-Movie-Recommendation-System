@@ -57,7 +57,8 @@ jobs:
           dvc add data/interactions.csv
           git config user.email "github-actions@github.com"
           git config user.name "GitHub Actions"
-          grep -qxF 'wandb/' .gitignore || echo 'wandb/' >> .gitignore
+          grep -qxF '.dvc/config' .gitignore || echo '.dvc/config' >> .gitignore
+          git rm --cached .dvc/config || true
           git add -A
           git commit -m "Auto update data after retrain" || echo "No changes to commit"
           dvc push
