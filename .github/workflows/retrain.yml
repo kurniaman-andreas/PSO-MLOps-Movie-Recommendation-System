@@ -44,6 +44,10 @@ jobs:
           dvc remote default s3remote
           dvc pull
 
+      - name: 🧼 Preprocess and Split Data
+        run: |
+          python preprocess_and_split.py
+
       - name: 🎯 Run Training Pipeline
         run: |
           python mlops.py
@@ -55,6 +59,8 @@ jobs:
       - name: ⬆️ Push DVC to S3 Remote
         run: |
           dvc add data/interactions.csv
+          dvc add data/train.csv
+          dvc add data/test.csv
           dvc push
       - name: 🐳 Login to Amazon ECR
         run: |
