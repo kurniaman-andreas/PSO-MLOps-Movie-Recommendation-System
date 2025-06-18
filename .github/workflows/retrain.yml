@@ -60,6 +60,7 @@ jobs:
           git add data/interactions.csv.dvc
           git commit -m "Auto update data after retrain" || echo "No changes to commit"
           dvc push
+          git push origin main
 
       - name: ✅ Done
         run: echo "MLOps pipeline finished successfully!"
