@@ -156,7 +156,7 @@ def main():
     logging.info(f"✅ Best model saved with params: {best_params} and RMSE: {best_rmse:.4f}")
 
     # Save the model
-    model_dir = os.path.join(".", "artifacts", "model")
+    model_dir = os.path.join(".", "model")  # Ganti dari "artifacts/model" ke "model"
     os.makedirs(model_dir, exist_ok=True)
     model_filename = os.path.join(model_dir, "svd_model.pkl")
     with open(model_filename, "wb") as f:
