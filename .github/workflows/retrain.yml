@@ -4,8 +4,6 @@ on:
   push:
     paths:
       - "data/interactions.csv.dvc"
-  schedule:
-    - cron: "0 2 * * *" # Run daily at 2 AM
   workflow_dispatch:
 
 jobs:
