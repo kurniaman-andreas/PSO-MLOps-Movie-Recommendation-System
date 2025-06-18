@@ -56,6 +56,22 @@ jobs:
         run: |
           dvc add data/interactions.csv
           dvc push
+      - name: 🐳 Login to Amazon ECR
+        run: |
+          aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin 807172404961.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+
+      - name: 🏗️ Build and Push Docker image
+        run: |
+          IMAGE_URI=807172404961.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/kurniaman/recommendation-system:latest
+          docker build -t $IMAGE_URI .
+          docker push $IMAGE_URI
+
+      - name: 🚀 Force ECS Service to Redeploy New Image
+        run: |
+          aws ecs update-service \
+            --cluster flask-cluster \
+            --service recommendation-task-service-gjn0sc1r \
+            --force-new-deployment
 
       - name: ✅ Done
         run: echo "MLOps pipeline finished successfully!"
