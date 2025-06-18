@@ -57,9 +57,11 @@ jobs:
           dvc add data/interactions.csv
           git config user.email "github-actions@github.com"
           git config user.name "GitHub Actions"
-          git add data/interactions.csv.dvc
+          grep -qxF 'wandb/' .gitignore || echo 'wandb/' >> .gitignore
+          git add -A
           git commit -m "Auto update data after retrain" || echo "No changes to commit"
           dvc push
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git push origin main
 
       - name: ✅ Done
